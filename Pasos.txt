@@ -1,0 +1,2 @@
+CONSOLE PROYECTO
+pip install flask flask-mysqldb
