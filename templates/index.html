@@ -1,9 +1,86 @@
-<form action="/add_contact" method="POST">
-    <input type="text" name="fullname" placeholder="FullName">
-    <input type="text" name="phone" placeholder="Phone">
-    <input type="text" name="email" placeholder="Email">
-   <button type="submit">
-       Save
-   </button>
+<!DOCTYPE html>
+<html lang="en">
 
-</form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+        crossorigin="anonymous">
+    <title>Document</title>
+</head>
+
+<body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <a class="navbar-brand" href="#">Navbar</a>
+              
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                  <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="#">Features</a>
+                    <a class="nav-item nav-link" href="#">Pricing</a>
+                    <a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                  </div>
+                </div>
+              </nav>
+
+
+    {% with messages= get_flashed_messages() %}
+    {% if messages %}
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h4 class="card-title">Insertar contacto</h4>
+                        <form action="/add_contact" method="POST" class="">
+                            <input class="form-control mb-3" type="text" name="fullname" placeholder="FullName">
+                            <input class="form-control mb-3" type="text" name="phone" placeholder="Phone">
+                            <input class="form-control mb-3" type="text" name="email" placeholder="Email">
+                            <button class="btn btn-primary" type="submit">
+                                Save
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-8">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <td>FullName</td>
+                            <td>Phone</td>
+                            <td>Email</td>
+                            <td>Operations</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for contac in contacts %}
+                        <tr>
+                            <td>{{ contac.1}}</td>
+                            <td>{{ contac.2}}</td>
+                            <td>{{ contac.3}}</td>
+                            <td></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>
